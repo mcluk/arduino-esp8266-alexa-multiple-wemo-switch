@@ -26,8 +26,3 @@ https://github.com/kakopappa/arduino-esp8266-alexa-wemo-switch/edit/master/READM
 ##Credits
 
 - makermusings - [GitHub](https://github.com/makermusings/fauxmo)
-
-##Developed By
-
-* Aruna Tennakoon
- * [paypal.me/arunat](http://paypal.me/arunat)
