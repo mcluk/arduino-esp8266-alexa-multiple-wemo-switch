@@ -10,21 +10,21 @@
 boolean connectWifi();
 
 //on/off callbacks 
-void officeLightsOn();
-void officeLightsOff();
-void kitchenLightsOn();
-void kitchenLightsOff();
+void masterbedroomLightsOn();
+void masterbedroomLightsOff();
+void kidsbedroomLightsOn();
+void kidsbedroomLightsOff();
 
 // Change this before you flash
-const char* ssid = "Aruna";
+const char* ssid = "*****";
 const char* password = "*****";
 
 boolean wifiConnected = false;
 
 UpnpBroadcastResponder upnpBroadcastResponder;
 
-Switch *office = NULL;
-Switch *kitchen = NULL;
+Switch *masterbedroom = NULL;
+Switch *kidsbedroom = NULL;
 
 void setup()
 {
@@ -38,12 +38,12 @@ void setup()
     
     // Define your switches here. Max 14
     // Format: Alexa invocation name, local port no, on callback, off callback
-    office = new Switch("office lights", 80, officeLightsOn, officeLightsOff);
-    kitchen = new Switch("kitchen lights", 81, kitchenLightsOn, kitchenLightsOff);
+    masterbedroom = new Switch("master bedroom light", 80, masterbedroomLightsOn, masterbedroomLightsOff);
+    kidsbedroom = new Switch("kids bedroom light", 81, kidsbedroomLightsOn, kidsbedroomLightsOff);
 
     Serial.println("Adding switches upnp broadcast responder");
-    upnpBroadcastResponder.addDevice(*office);
-    upnpBroadcastResponder.addDevice(*kitchen);
+    upnpBroadcastResponder.addDevice(*masterbedroom);
+    upnpBroadcastResponder.addDevice(*kidsbedroom);
   }
 }
  
@@ -52,25 +52,25 @@ void loop()
 	 if(wifiConnected){
       upnpBroadcastResponder.serverLoop();
       
-      kitchen->serverLoop();
+      masterbedroom->serverLoop();
       office->serverLoop();
 	 }
 }
 
-void officeLightsOn() {
+void masterbedroomLightsOn() {
     Serial.print("Switch 1 turn on ...");
 }
 
-void officeLightsOff() {
+void masterbedroomLightsOff() {
     Serial.print("Switch 1 turn off ...");
 }
 
-void kitchenLightsOn() {
+void kidsbedroomLightsOn() {
     Serial.print("Switch 2 turn on ...");
 }
 
-void kitchenLightsOff() {
-  Serial.print("Switch 2 turn off ...");
+void kidsbedroomLightsOff() {
+    Serial.print("Switch 2 turn off ...");
 }
 
 // connect to wifi – returns true if successful or false if not
